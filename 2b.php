@@ -17,7 +17,9 @@
                 <option value="B02">B02 - Mouse</option>
                 <option value="C03">C03 - Harddisk</option>
                 <option value="D04">D04 - Mouse Pad</option>
-                <option value="D07">D05 - SSD</option>
+                <option value="D07">D07 - SSD</option>
+                <option value="D05">D05 - Keyboard</option>
+                <option value="F06">F06 - Pelancar CPU Berbasis Lendir Siput</option>
                 </select>          </td>
         </tr>
         <tr>
@@ -42,7 +44,9 @@
               <option value="Bandung">Bandung</option>
               <option value="Padang">Padang</option>
               <option value="Yogyakarta">Yogyakarta</option>            
-              <option value="Yogyakarta">Garut</option>            
+              <option value="Garut">Garut</option>             
+              <option value="Batam">Batam</option>                     
+              <option value="Kota Siput">Kota Siput</option>            
             </select>
           </td>
         </tr>
@@ -86,6 +90,14 @@ if ($kode=="C03"){
 if ($kode=="D04"){
 	$nama="Mouse Pad";
 	$harga=5000;
+}
+if ($kode=="D05"){
+	$nama="Keyboard";
+	$harga=55000;
+}
+if ($kode=="F06"){
+	$nama="Pelancar CPU Berbasis Lendir Siput";
+	$harga=6000000;
 }
 
 if ($kode =="D07"){
@@ -135,8 +147,15 @@ if ($kota_kirim=="Yogyakarta"){
 	$ongkos_kirim=20000;
 }
 else
+
 if ($kota_kirim=="Garut"){
   $ongkos_kirim=25000;
+}
+if ($kota_kirim=="Batam"){
+	$ongkos_kirim=120000;
+}
+if ($kota_kirim=="Kota Siput"){
+	$ongkos_kirim=623000;
 }
 
 $total_diskon=$diskon+$diskon_status;
