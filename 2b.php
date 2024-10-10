@@ -17,6 +17,7 @@
                 <option value="B02">B02 - Mouse</option>
                 <option value="C03">C03 - Harddisk</option>
                 <option value="D04">D04 - Mouse Pad</option>
+                <option value="F06">F06 - Pelancar CPU Berbasis Lendir Siput</option>
                 </select>          </td>
         </tr>
         <tr>
@@ -41,6 +42,7 @@
               <option value="Bandung">Bandung</option>
               <option value="Padang">Padang</option>
               <option value="Yogyakarta">Yogyakarta</option>            
+              <option value="Kota Siput">Kota Siput</option>            
             </select>
           </td>
         </tr>
@@ -86,6 +88,11 @@ if ($kode=="D04"){
 	$harga=5000;
 }
 
+if ($kode=="F06"){
+	$nama="Pelancar CPU Berbasis Lendir Siput";
+	$harga=6000000;
+}
+
 $subtotal=$harga*$jumlah;
 
 if ($subtotal>=100000){
@@ -126,6 +133,10 @@ if ($kota_kirim=="Padang"){
 else
 if ($kota_kirim=="Yogyakarta"){
 	$ongkos_kirim=20000;
+}
+else
+if ($kota_kirim=="Kota Siput"){
+	$ongkos_kirim=623000;
 }
 
 $total_diskon=$diskon+$diskon_status;
