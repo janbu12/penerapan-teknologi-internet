@@ -17,7 +17,7 @@
                 <option value="B02">B02 - Mouse</option>
                 <option value="C03">C03 - Harddisk</option>
                 <option value="D04">D04 - Mouse Pad</option>
-                <option value="D04">D05 - Keyboard</option>
+                <option value="D05">D05 - Keyboard</option>
                 </select>          </td>
         </tr>
         <tr>
