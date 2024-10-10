@@ -17,6 +17,7 @@
                 <option value="B02">B02 - Mouse</option>
                 <option value="C03">C03 - Harddisk</option>
                 <option value="D04">D04 - Mouse Pad</option>
+                <option value="D04">D05 - Keyboard</option>
                 </select>          </td>
         </tr>
         <tr>
@@ -40,7 +41,8 @@
               <option value="Jakarta">Jakarta</option>
               <option value="Bandung">Bandung</option>
               <option value="Padang">Padang</option>
-              <option value="Yogyakarta">Yogyakarta</option>            
+              <option value="Yogyakarta">Yogyakarta</option>   
+              <option value="Batam">Batam</option>           
             </select>
           </td>
         </tr>
@@ -85,6 +87,10 @@ if ($kode=="D04"){
 	$nama="Mouse Pad";
 	$harga=5000;
 }
+if ($kode=="D05"){
+	$nama="Keyboard";
+	$harga=55000;
+}
 
 $subtotal=$harga*$jumlah;
 
@@ -126,6 +132,10 @@ if ($kota_kirim=="Padang"){
 else
 if ($kota_kirim=="Yogyakarta"){
 	$ongkos_kirim=20000;
+}
+else
+if ($kota_kirim=="Batam"){
+	$ongkos_kirim=120000;
 }
 
 $total_diskon=$diskon+$diskon_status;
