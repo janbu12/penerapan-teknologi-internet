@@ -17,7 +17,7 @@
                 <option value="B02">B02 - Mouse</option>
                 <option value="C03">C03 - Harddisk</option>
                 <option value="D04">D04 - Mouse Pad</option>
-                <option value="D05">D05 - SSD</option>
+                <option value="D07">D05 - SSD</option>
                 </select>          </td>
         </tr>
         <tr>
@@ -88,7 +88,7 @@ if ($kode=="D04"){
 	$harga=5000;
 }
 
-if ($kode =="D05"){
+if ($kode =="D07"){
   $nama="SSD";
   $harga=100000;
 }
