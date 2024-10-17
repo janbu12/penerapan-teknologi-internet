@@ -46,7 +46,6 @@ CREATE TABLE `berita` (
 
 CREATE TABLE `login` (
   `id_login` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -55,7 +54,7 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id_login`, `nama`, `username`, `password`) VALUES
+INSERT INTO `login` (`id_login`, `username`, `password`) VALUES
 (1, 'Afie Afie', 'afieafie', '12345'),
 (2, 'Fadel Anugerah Gusti', 'fadelag', '12345');
 
