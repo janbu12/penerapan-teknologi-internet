@@ -7,7 +7,7 @@ date_default_timezone_set("Asia/Bangkok");
  $host = "localhost";   
 $user = "root";   
 $pass = "";   
- $db = "db_buku_tamu";   
+ $db = "db_login_berita";   
     
  $mysqli = new mysqli($host, $user, $pass, $db);   
 if ($mysqli->connect_errno) {   
