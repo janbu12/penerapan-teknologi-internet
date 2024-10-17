@@ -1,3 +1,3 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_berita");
+$conn = mysqli_connect("localhost","root","","db_login_berita");
 ?>

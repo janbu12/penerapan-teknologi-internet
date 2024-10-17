@@ -2,7 +2,7 @@
 session_start();   
 $default_lang = 'bahasa_indonesia';       
 
-if(!$_SESSION['lang']) {   
+if(!isset($_SESSION['lang'])) {   
      $_SESSION['lang'] = $default_lang;   
 }       
 if(isset($_GET['lang'])) {   
@@ -26,7 +26,7 @@ if(isset($_GET['lang'])) {
                  <li><a href="#"><?php echo $lang_menu_home; ?></a></li>   
                  <li><a href="#"><?php echo $lang_menu_profile; ?></a></li>   
                  <li><a href="#"><?php echo $lang_menu_contact; ?></a></li>   
-                 <li><a href="tambah_berita.html"><?php echo $lang_menu_add; ?></a></li>   
+                 <li><a href="tambah_berita.php"><?php echo $lang_menu_add; ?></a></li>   
              </ul>   
          </nav>            
 <p>   
