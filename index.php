@@ -16,7 +16,15 @@ if(isset($_GET['lang'])) {
     
  <html>   
      <head>   
-         <title><?php echo $lang_judul; ?></title>   
+        <title><?php echo $lang_judul; ?></title>   
+        <style>
+            th {
+                 border: 1px solid black;
+            }
+            td {
+                border: 1px solid black;
+            }
+        </style>
      </head>   
      <body>   
          <a href="?lang=bahasa_inggris">Bahasa Inggris</a>   
@@ -32,6 +40,7 @@ if(isset($_GET['lang'])) {
 <p>   
 <?php echo "$lang_selamat_datang" ?>   
 </p>
+<table style="border: 3px solid black;">
 <?php   
    
      include "db.php";   
@@ -43,7 +52,7 @@ if(isset($_GET['lang'])) {
                  <th>Waktu</th>    
                  <th>Judul</th>   
                  <th>Isi   </th>   
-                 <th>Nama File</th>   
+                 <th>Nama File</th>   </tr>
                  ";   
      }   
     
@@ -53,7 +62,7 @@ if(isset($_GET['lang'])) {
                  <th>Time</th>    
                  <th>Title</th>   
                  <th>Content</th>   
-                 <th>File Name</th>   
+                 <th>File Name</th>   </tr>
                 ";   
     
      }   
@@ -73,23 +82,24 @@ if(isset($_GET['lang'])) {
                      <td>$waktu_berita</td>   
                      <td>$judul_en</td>   
                      <td>$isi_en</td>   
-                     <td><a href='berkas/$nama_file'>$nama_file</a></td>   
+                     <td><a href='berkas/$nama_file'>$nama_file</a></td></tr>   
                  ";   
            } else if ($_SESSION['lang'] == "bahasa_indonesia"){   
            echo "<tr><td>$id_berita</td>   
                      <td>$waktu_berita</td>   
                      <td>$judul_id</td>   
                      <td>$isi_id</td>   
-                     <td><a href='berkas/$nama_file'>$nama_file</a></td>   
+                     <td><a href='berkas/$nama_file'>$nama_file</a></td>   </tr>
                  ";   
            }   
     
           }   
          while ($row=mysqli_fetch_row($hasil));   
      }else {   
-         echo "<tr><td colspan=7> Tidak ada data";   
+         echo "<tr><td colspan=7> Tidak ada data</td></tr>";   
      }   
     
  ?>   
+ </table>
 </body>   
 </html>   

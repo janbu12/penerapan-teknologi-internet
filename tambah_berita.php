@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Ambil nama pengguna dari session
-$nama = $_SESSION['nama'];
+$nama = $_SESSION['username'];
 
 // Tampilkan pesan hello
 echo "Hello, $nama!";
@@ -40,13 +40,11 @@ echo "Hello, $nama!";
              </tr>   
              <tr>   
                  <td> Isi Berita Bahasa Indonesia  </td>   
-                 <td> <textarea rows="10" cols="50" name=isi_berita_indonesia 
-maxlength=1000 ></textarea></td>   
+                 <td> <textarea rows="10" cols="50" name=isi_berita_indonesia maxlength=1000 ></textarea></td>   
              </tr>   
              <tr>   
                  <td> Isi Berita Bahasa Inggris    </td>   
-                 <td> <textarea rows="10" cols="50" name=isi_berita_inggris 
-maxlength=1000></textarea> </td>   
+                 <td> <textarea rows="10" cols="50" name=isi_berita_inggris maxlength=1000></textarea> </td>   
              </tr>   
              <tr>   
                  <td> File Pendukung           </td>   

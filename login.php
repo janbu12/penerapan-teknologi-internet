@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $host = "localhost"; // sesuaikan dengan host Anda
     $user = "root"; // sesuaikan dengan username database Anda
     $password = ""; // sesuaikan dengan password database Anda
-    $dbname = "db_berita"; // sesuaikan dengan nama database Anda
+    $dbname = "db_login_berita"; // sesuaikan dengan nama database Anda
 
     // Buat koneksi
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -21,21 +21,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Ambil data dari form
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $password_new = sha1($password);
 
     // Query untuk mengambil data pengguna berdasarkan username
-    $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM login WHERE username = '$username'";
     $result = $conn->query($sql);
 
     // Cek apakah ada hasil dari query
     if ($result->num_rows > 0) {
-        // Pengguna ditemukan, set session dan arahkan ke tambah_berita.php
+        // Pengguna ditemukan, ambil hash password dari database
         $row = $result->fetch_assoc();
-        $_SESSION['username'] = $row['username'];  // Simpan username dalam session
-        $_SESSION['nama'] = $row['nama'];  // Simpan nama dalam session
-        header("Location: tambah_berita.php");  // Arahkan ke tambah_berita.php
-        exit();
+        $hashed_password = $row['password'];  // Ambil hash password dari database
+
+        // Verifikasi password
+        if ($password_new == $hashed_password) {
+            // Jika password benar, set session dan arahkan ke tambah_berita.php
+            $_SESSION['username'] = $row['username'];  // Simpan username dalam session
+            $_SESSION['nama'] = $row['nama'];  // Simpan nama dalam session
+            header("Location: tambah_berita.php");  // Arahkan ke tambah_berita.php
+            exit();
+        } else {
+            // Jika password salah
+            echo "Username atau password salah! $password_new $hashed_password";
+        }
     } else {
-        // Jika username atau password salah
+        // Jika username tidak ditemukan
         echo "Username atau password salah!";
     }
 

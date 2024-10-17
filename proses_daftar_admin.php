@@ -22,7 +22,7 @@ if ($password != $password2) {
 }
 
 // Cek apakah username sudah terdaftar
-$data = mysqli_query($mysqli, "SELECT * FROM admin WHERE username='$username'");
+$data = mysqli_query($mysqli, "SELECT * FROM login WHERE username='$username'");
 $cek = mysqli_num_rows($data);
 
 // Jika username sudah ada, kembalikan ke form pendaftaran
@@ -36,7 +36,7 @@ if ($cek > 0) {
 $password_new = sha1($password);
 
 // Menyimpan data admin baru ke dalam database
-$result = mysqli_query($mysqli, "INSERT INTO `admin` (`username`, `password`) VALUES ('$username', '$password_new')");
+$result = mysqli_query($mysqli, "INSERT INTO `login` (`username`, `password`) VALUES ('$username', '$password_new')");
 
 if ($result) {
     // Jika berhasil, redirect ke halaman login

@@ -27,17 +27,15 @@ if($_POST['simpan']){
              move_uploaded_file($file_tmp, 'berkas/'.$nama);   
     
              $hasil= mysqli_query($mysqli,   
-                 "INSERT INTO berita VALUES (NULL,NOW(),'$judul_id','$judul_en','$is
- i_id','$isi_en','$nama','T')");   
+                 "INSERT INTO berita VALUES (NULL,NOW(),'$judul_id','$judul_en','$isi_id','$isi_en','$nama','T')");   
              if($hasil){   
-                 echo 'Proses Upload File : Berhasil';   
+                 echo 'Proses Upload File : Berhasil<br>';   
                  echo '<a href="index.php">Kembali Ke Halaman Berita</a>';   
              }   
              else{   
                  echo 'Proses Upload File : Gagal';   
                  echo '<a href="index.php">Kembali Ke Halaman Berita</a>';   
-                 echo '<a href="tambah_berita.html.php">Kembali Ke Form Tambah Berit
- a</a>';   
+                 echo '<a href="tambah_berita.html.php">Kembali Ke Form Tambah Berita</a>';   
              }   
          }   
          else{   
