@@ -1,105 +1,59 @@
-<?php   
-session_start();   
-$default_lang = 'bahasa_indonesia';       
+<?php
+include 'koneksi.php';
+?>
 
-if(!isset($_SESSION['lang'])) {   
-     $_SESSION['lang'] = $default_lang;   
-}       
-if(isset($_GET['lang'])) {   
-     $_SESSION['lang'] = $_GET['lang'];   
-     header("Location: index.php");   
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fashion</title>
+</head>
+<body>
+<?php
+if (isset($_GET["hapus"])) {
+    // Query untuk menghapus data
+    $sql = "DELETE FROM produk WHERE id_produk = " . $_GET["hapus"];
+    if ($conn->query($sql) === TRUE) {
+        // Mengalihkan halaman
+        header("Location: http://localhost/tokoberkah/admin");
+    }
 }
-    
- // masukan file bahasa yang sedang aktif   
- include $_SESSION['lang'] . '.php';   
- ?>   
-    
- <html>   
-     <head>   
-        <title><?php echo $lang_judul; ?></title>   
-        <style>
-            th {
-                 border: 1px solid black;
-            }
-            td {
-                border: 1px solid black;
-            }
-        </style>
-     </head>   
-     <body>   
-         <a href="?lang=bahasa_inggris">Bahasa Inggris</a>   
-         <a href="?lang=bahasa_indonesia">Bahasa Indonesia</a>   
-         <nav>   
-             <ul>   
-                 <li><a href="#"><?php echo $lang_menu_home; ?></a></li>   
-                 <li><a href="#"><?php echo $lang_menu_profile; ?></a></li>   
-                 <li><a href="#"><?php echo $lang_menu_contact; ?></a></li>   
-                 <li><a href="tambah_berita.php"><?php echo $lang_menu_add; ?></a></li>   
-             </ul>   
-         </nav>            
-<p>   
-<?php echo "$lang_selamat_datang" ?>   
-</p>
-<table style="border: 3px solid black;">
-<?php   
-   
-     include "db.php";   
-    
-    
-    
-     if ($_SESSION['lang'] == "bahasa_indonesia"){   
-     echo "<tr>    <th>Id </th>   
-                 <th>Waktu</th>    
-                 <th>Judul</th>   
-                 <th>Isi   </th>   
-                 <th>Nama File</th>   </tr>
-                 ";   
-     }   
-    
-     if ($_SESSION['lang'] == "bahasa_inggris"){   
-         echo "<tr>       
-                 <th>Id </th>   
-                 <th>Time</th>    
-                 <th>Title</th>   
-                 <th>Content</th>   
-                 <th>File Name</th>   </tr>
-                ";   
-    
-     }   
+?>
 
- 
-    
-     $sql="select * from berita order by id_berita asc";   
-     $hasil=mysqli_query($mysqli,$sql);   
-     $row=mysqli_fetch_row($hasil);   
-     if ($hasil) {   
-    
-       do   
-          {   
-           list ($id_berita, $waktu_berita, $judul_id, $judul_en, $isi_id,$isi_en,$nama_file,$dihapus)=$row;   
-           if ($_SESSION['lang'] == "bahasa_inggris"){   
-           echo "<tr><td>$id_berita</td>   
-                     <td>$waktu_berita</td>   
-                     <td>$judul_en</td>   
-                     <td>$isi_en</td>   
-                     <td><a href='berkas/$nama_file'>$nama_file</a></td></tr>   
-                 ";   
-           } else if ($_SESSION['lang'] == "bahasa_indonesia"){   
-           echo "<tr><td>$id_berita</td>   
-                     <td>$waktu_berita</td>   
-                     <td>$judul_id</td>   
-                     <td>$isi_id</td>   
-                     <td><a href='berkas/$nama_file'>$nama_file</a></td>   </tr>
-                 ";   
-           }   
-    
-          }   
-         while ($row=mysqli_fetch_row($hasil));   
-     }else {   
-         echo "<tr><td colspan=7> Tidak ada data</td></tr>";   
-     }   
-    
- ?>   
- </table>
-</body>   
-</html>   
+<h1>Berkah Fashion - Admin</h1>
+<table>
+<?php
+$sql = "SELECT * FROM produk";
+$result = $conn->query($sql);
+$i = 0;
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $i++;
+        echo '<tr>
+            <td width="30px"><center>'.$i.'</center></td>
+            <td><img width="100px" src="image/'.$row["foto"].'"/></td>
+            <td width="200px">'.$row["nama_produk"].'</td>
+            <td width="100px">Rp'.number_format($row["harga"], 0, '.', '.').'</td>
+            <td>
+                <button><a href="ubah.php?id='.$row["id_produk"].'">Ubah</a></button>
+                <button onclick="hapus('.$row["id_produk"].',`'.$row["nama_produk"].'`)">Hapus</button>
+            </td>
+        </tr>';
+    }
+} else {
+    echo "Belum ada produk";
+}
+?>
+</table>
+
+<br>
+<button><a href="tambah.php">Tambah Produk baru</a></button>
+
+<script>
+function hapus(id, nama_produk) {
+    if (confirm('Apakah anda yakin ' + nama_produk + ' akan di hapus? ')) {
+        window.location.replace(`<?= getBaseUrl("index.php?hapus=") ?>` + id);
+    }
+}
+</script>
+</body>
+</html>
