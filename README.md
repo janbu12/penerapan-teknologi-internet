@@ -1,0 +1,1 @@
+api openweather = e6b9e50079154cb29ea760025a4db9d7
